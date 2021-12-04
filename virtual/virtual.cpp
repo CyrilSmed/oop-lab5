@@ -1,20 +1,119 @@
-// virtual.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
-
 #include <iostream>
+#include <string>
+using namespace std;
+
+class Animal
+{
+public:
+    Animal()
+    {
+        printf("Animal::Animal()\n");
+    }
+    /*virtual*/ ~Animal()
+    {
+        printf("Animal::~Animal()\n");
+    }
+
+    virtual string classname()
+    {
+        return "Animal";
+    }
+    virtual bool isA(string type)
+    {
+        if (type == "Animal")
+        {
+            return true;
+        }
+        return false;
+    }
+    virtual void makeSound()
+    {
+        printf("Animal::makeSound()\n");
+    }
+    void pet()
+    {
+        printf("Animal::pet()\n");
+    }
+
+};
+
+class Dog : public Animal
+{
+public:
+    Dog()
+    {
+        printf("Dog::Dog()\n");
+    }
+    ~Dog()
+    {
+        printf("Dog::~Dog()\n");
+    }
+
+    string classname() override
+    {
+        return "Dog";
+    }
+    bool isA(string type)
+    {
+        if (type == "Dog")
+        {
+            return true;
+        }
+        return Animal::isA(type);
+    }
+    void makeSound() override
+    {
+        printf("Dog::makeSound()\n");
+    }
+    void pet() 
+    {
+        printf("Dog::pet()\n");
+    }
+
+
+    void guard()
+    {
+        printf("Dog::guard()\n");
+    }
+};
+
+class Cat : public Animal
+{
+public:
+    Cat()
+    {
+        printf("Cat::Cat()\n");
+    }
+    ~Cat()
+    {
+        printf("Cat::~Cat()\n");
+    }
+
+    string classname() override
+    {
+        return "Cat";
+    }
+    bool isA(string type)
+    {
+        if (type == "Cat")
+        {
+            return true;
+        }
+        return Animal::isA(type);
+    }
+    void makeSound() override
+    {
+        printf("Cat::makeSound()\n");
+    }
+
+
+    void makeAMess()
+    {
+        printf("Cat::makeAMess()\n");
+    }
+};
 
 int main()
 {
-    std::cout << "Hello World!\n";
+
 }
-
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
