@@ -115,5 +115,15 @@ public:
 
 int main()
 {
+    Animal* animalA = new Dog();
+    Animal* animalB = new Cat();
+    Dog* dog = new Dog();
 
+    printf("\nNonvirtual overridden methods:\n");
+    animalA->pet();       // inherited method is called
+    dog->pet();             // overridden method is called
+
+    printf("\nVirtual overridden methods:\n");
+    animalA->makeSound(); // overridden method is called
+    dog->makeSound();       // overridden method is called
 }
