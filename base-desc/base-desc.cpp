@@ -88,5 +88,22 @@ void funcThree(Base& obj)
 
 int main()
 {
+    Base* basePtr = new Base(10);
+    Desc* descPtr = new Desc(5);
 
+    printf("\n");
+    funcOne(*basePtr);
+    funcOne(*descPtr);
+
+    printf("\n");
+    // Since we have a Base(Base* obj) constructor, we can directly use pointers
+    funcOne(basePtr);
+
+    printf("\n");
+    funcTwo(basePtr);
+    funcTwo(descPtr);
+
+    printf("\n");
+    funcThree(*basePtr);
+    funcThree(*descPtr);
 }
