@@ -64,6 +64,28 @@ public:
     }
 };
 
+void funcOne(Base obj) // Uses copy constructor
+{
+    printf("funcOne()\n");
+    printf("baseNum: %d\n", obj.getBaseNum());
+
+    obj.setBaseNum(obj.getBaseNum() + 1); // only changes the copy
+}
+void funcTwo(Base* obj)
+{
+    printf("funcTwo()\n");
+    printf("baseNum: %d\n", obj->getBaseNum());
+
+    obj->setBaseNum(obj->getBaseNum() + 1);
+}
+void funcThree(Base& obj)
+{
+    printf("funcThree()\n");
+    printf("baseNum: %d\n", obj.getBaseNum());
+
+    obj.setBaseNum(obj.getBaseNum() + 1);
+}
+
 int main()
 {
 
