@@ -126,4 +126,21 @@ int main()
     printf("\nVirtual overridden methods:\n");
     animalA->makeSound(); // overridden method is called
     dog->makeSound();       // overridden method is called
+
+    printf("\nUnsafe casting\n");
+    ((Cat*)animalB)->makeAMess();
+
+    printf("\nSafe casting by string type check\n");
+    if (animalA->classname() == "Dog")
+    {
+        ((Dog*)animalA)->guard();
+    }
+    if (dog->classname() == "Animal") // Won't be called
+    {
+        ((Animal*)dog)->makeSound();
+    }
+    else
+    {
+        printf("((Animal*)dog)->makeSound() was not called\n");
+    }
 }
