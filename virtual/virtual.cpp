@@ -143,4 +143,22 @@ int main()
     {
         printf("((Animal*)dog)->makeSound() was not called\n");
     }
+
+    printf("\nSafe casting by isA() type check \n");
+    if (dog->isA("Animal")) // Will be called
+    {
+        ((Animal*)dog)->makeSound();
+    }
+
+    printf("\nSafe casting by dynamic_cast\n");
+    Cat* cat = dynamic_cast<Cat*>(animalB);
+    if (cat != nullptr)
+    {
+        cat->makeAMess();
+    }
+
+    printf("\nVirtual vs nonvirtual destructors:\n");
+    delete animalA;
+    delete animalB;
+    delete dog;
 }
